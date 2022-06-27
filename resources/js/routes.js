@@ -1,4 +1,5 @@
-import ExampleComponent from './components/ExampleComponent.vue';
+import { createWebHistory, createRouter } from "vue-router";
+import ExampleComponent from "./components/ExampleComponent";
 
 export const routes = [
     {
@@ -7,3 +8,10 @@ export const routes = [
         component: ExampleComponent
     }
 ];
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+});
+
+export default router;
