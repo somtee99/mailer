@@ -4,7 +4,7 @@
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav">
                     <router-link to="/" class="nav-item nav-link">Subscribers</router-link>
-                    <router-link to="/" class="nav-item nav-link">Fields</router-link>
+                    <router-link to="/fields" class="nav-item nav-link">Fields</router-link>
                 </div>
             </div>
         </nav>
@@ -13,5 +13,6 @@
 </template>
 
 <script>
-export default {}
+export default {
+}
 </script>

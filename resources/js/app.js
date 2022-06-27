@@ -10,6 +10,7 @@ window.Vue = require('vue');
 import App from './App.vue';
 import { createApp } from 'vue';
 import router from './routes';
+import axios from 'axios';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

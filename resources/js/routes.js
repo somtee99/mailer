@@ -1,12 +1,12 @@
 import { createWebHistory, createRouter } from "vue-router";
-import ExampleComponent from "./components/ExampleComponent";
+import Fields from "./components/Fields";
 
 export const routes = [
     {
-        name: 'home',
-        path: '/',
-        component: ExampleComponent
-    }
+        name: 'fields',
+        path: '/fields',
+        component: Fields
+    },
 ];
 
 const router = createRouter({
