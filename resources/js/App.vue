@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav">
-                    <router-link to="/" class="nav-item nav-link">Subscribers</router-link>
+                    <router-link to="/subscribers" class="nav-item nav-link">Subscribers</router-link>
                     <router-link to="/fields" class="nav-item nav-link">Fields</router-link>
                 </div>
             </div>

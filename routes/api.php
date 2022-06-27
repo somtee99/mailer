@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FieldController;
+use App\Http\Controllers\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ use App\Http\Controllers\FieldController;
 //});
 
 Route::resource('fields', FieldController::class)->only(['index', 'destroy']);
+Route::resource('subscribers', SubscriberController::class)->only(['index']);
