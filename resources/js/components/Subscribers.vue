@@ -20,6 +20,15 @@
                                 <td>{{ subscriber.name }}</td>
                                 <td>{{ subscriber.email }}</td>
                                 <td>{{ subscriber.state }}</td>
+                                <td>
+                                    <subscriber-show
+                                    :show="showModal(subscriber.id)"
+                                    @close="toggleModal(subscriber.id)" />
+
+                                    <button type="button" class="btn-sm btn-info" @click.stop="toggleModal(subscriber.id)">
+                                        View
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -30,10 +39,15 @@
 </template>
 
 <script>
+    import SubscriberShow from "./SubscriberShow";
+    import Modal from "./widgets/Modal";
+
     export default {
+        components: {SubscriberShow, Modal},
         data() {
             return {
-                subscribers: []
+                subscribers: [],
+                activeModal: 0
             }
         },
         created() {
@@ -43,6 +57,16 @@
                 });
         },
         methods: {
+            showModal(id) {
+                return this.activeModal === id
+            },
+            toggleModal(id) {
+                if(this.activeModal !== 0) {
+                    this.activeModal = 0
+                    return false
+                }
+                this.activeModal = id
+            }
         }
     }
 </script>

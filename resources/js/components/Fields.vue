@@ -11,7 +11,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Type</th>
-                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -22,6 +21,13 @@
                                 <td>
                                     <button type="button" class="btn-sm btn-danger" @click="deleteField(field.id)">
                                         Delete Field
+                                    </button>
+
+                                    <field-show
+                                        :show="showModal(field.id)"
+                                        @close="toggleModal(field.id)" />
+                                    <button type="button" class="btn-sm btn-info" @click.stop="toggleModal(field.id)">
+                                        View Field
                                     </button>
                                 </td>
                             </tr>
@@ -34,10 +40,14 @@
 </template>
 
 <script>
+    import FieldShow from "./FieldShow";
+
     export default {
+        components: {FieldShow},
         data() {
             return {
-                fields: []
+                fields: [],
+                activeModal: 0
             }
         },
         created() {
@@ -53,6 +63,16 @@
                         let i = this.fields.map(data => data.id).indexOf(id);
                         this.fields.splice(i, 1)
                     });
+            },
+            showModal(id) {
+                return this.activeModal === id
+            },
+            toggleModal(id) {
+                if(this.activeModal !== 0) {
+                    this.activeModal = 0
+                    return false
+                }
+                this.activeModal = id
             }
         }
     }
