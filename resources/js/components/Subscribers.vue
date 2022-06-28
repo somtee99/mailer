@@ -23,6 +23,7 @@
                                 <td>
                                     <subscriber-show
                                     :show="showModal(subscriber.id)"
+                                    :subscriber="subscriber"
                                     @close="toggleModal(subscriber.id)" />
 
                                     <button type="button" class="btn-sm btn-info" @click.stop="toggleModal(subscriber.id)">

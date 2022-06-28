@@ -21,4 +21,4 @@ use App\Http\Controllers\SubscriberController;
 //});
 
 Route::resource('fields', FieldController::class)->only(['index', 'destroy']);
-Route::resource('subscribers', SubscriberController::class)->only(['index']);
+Route::resource('subscribers', SubscriberController::class)->only(['index', 'show']);
