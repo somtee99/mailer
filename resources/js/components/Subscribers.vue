@@ -52,10 +52,7 @@
             }
         },
         created() {
-            axios.get('api/subscribers')
-                .then(response => {
-                    this.subscribers = response.data.data;
-                });
+            this.getSubscribers();
         },
         methods: {
             showModal(id) {
@@ -67,6 +64,12 @@
                     return false
                 }
                 this.activeModal = id
+            },
+            getSubscribers(){
+                axios.get('api/subscribers')
+                    .then(response => {
+                        this.subscribers = response.data.data;
+                    });
             }
         }
     }

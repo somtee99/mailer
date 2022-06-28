@@ -25,16 +25,6 @@ class FieldController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -63,7 +53,7 @@ class FieldController extends Controller
             ], 400);
         }
 
-        Field::create($validation->safe());
+        Field::create($validation->safe()->only(['title', 'type']));
 
         return response()->json([
             "status" => "success",
@@ -86,17 +76,6 @@ class FieldController extends Controller
             "message" => "Field Retrieved",
             "data" => $field
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

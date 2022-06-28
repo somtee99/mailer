@@ -2,6 +2,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
+                <div class="text-end mb-2">
+                    <button type="button" class="btn-md btn-outline-success" @click="$router.push('/add-field')">
+                        Add Field
+                    </button>
+                </div>
+
                 <div class="card">
                     <div class="card-header text-center">Fields</div>
 
