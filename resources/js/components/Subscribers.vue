@@ -21,7 +21,7 @@
                                 <td>{{ subscriber.email }}</td>
                                 <td>{{ subscriber.state }}</td>
                                 <td>
-                                    <subscriber-show
+                                    <show-subscriber
                                     :show="showModal(subscriber.id)"
                                     :subscriber="subscriber"
                                     @close="toggleModal(subscriber.id)" />
@@ -40,11 +40,11 @@
 </template>
 
 <script>
-    import SubscriberShow from "./SubscriberShow";
     import Modal from "./widgets/Modal";
+    import ShowSubscriber from "./ShowSubscriber";
 
     export default {
-        components: {SubscriberShow, Modal},
+        components: {ShowSubscriber, Modal},
         data() {
             return {
                 subscribers: [],

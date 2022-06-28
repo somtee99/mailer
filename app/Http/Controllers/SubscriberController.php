@@ -15,7 +15,7 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        $subscribers = Subscriber::all();
+        $subscribers = Subscriber::with('fields')->latest()->get();
 
         return response()->json([
             "status" => "success",

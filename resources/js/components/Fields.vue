@@ -23,9 +23,10 @@
                                         Delete Field
                                     </button>
 
-                                    <field-show
+                                    <show-field
                                         :show="showModal(field.id)"
                                         :field="field"
+                                        @update-field="updateField"
                                         @close="toggleModal(field.id)" />
                                     <button type="button" class="btn-sm btn-info" @click.stop="toggleModal(field.id)">
                                         View Field
@@ -41,10 +42,10 @@
 </template>
 
 <script>
-    import FieldShow from "./FieldShow";
+    import ShowField from "./ShowField";
 
     export default {
-        components: {FieldShow},
+        components: {ShowField},
         data() {
             return {
                 fields: [],
@@ -52,10 +53,7 @@
             }
         },
         created() {
-            axios.get('api/fields')
-                .then(response => {
-                    this.fields = response.data.data;
-                });
+           this.getFields();
         },
         methods: {
             deleteField(id) {
@@ -64,6 +62,10 @@
                         let i = this.fields.map(data => data.id).indexOf(id);
                         this.fields.splice(i, 1)
                     });
+            },
+            updateField(field) {
+                let i = this.fields.map(data => data.id).indexOf(field.id);
+                this.fields[i] = field;
             },
             showModal(id) {
                 return this.activeModal === id
@@ -74,6 +76,12 @@
                     return false
                 }
                 this.activeModal = id
+            },
+            getFields(){
+                axios.get('api/fields')
+                    .then(response => {
+                        this.fields = response.data.data;
+                    });
             }
         }
     }

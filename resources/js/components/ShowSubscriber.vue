@@ -25,6 +25,7 @@
                         <b>{{ field.title }}</b>: {{ field.pivot.value }}
                     </li>
                 </ul>
+
                 <div v-else class="text-start fst-italic fs-6">No Custom Field</div>
             </div>
         </modal>
@@ -38,15 +39,11 @@ export default {
     props: ['show', 'subscriber'],
     data() {
         return {
-            fields: []
+            fields: [],
         }
     },
     created() {
-        axios.get(`api/subscribers/${this.subscriber.id}`)
-            .then(response => {
-                console.log(response.data);
-                this.fields = response.data.data.fields;
-            });
+        this.fields = this.subscriber.fields;
     },
     components: {Modal},
     methods: {

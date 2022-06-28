@@ -61,11 +61,6 @@ class FieldController extends Controller
                 "status" => "failed",
                 "message"=> $error_message
             ], 400);
-
-            //redirect back
-//            return redirect('post/create')
-//                ->withErrors($validator)
-//                ->withInput();
         }
 
         Field::create($validation->safe());
@@ -109,11 +104,31 @@ class FieldController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        //validate request
+        $validation = Validator::make($request->all(), [
+            'title' => 'required',
+            'type' => 'required'
+        ]);
+
+        if($validation->fails()){
+            return response()->json([
+                "status" => "failed",
+                "message"=> "Validation Failed"
+            ], 400);
+        }
+
+        $data = $validation->safe()->only(['title', 'type']);
+        Field::find($id)->update($data);
+
+        return response()->json([
+            "status" => "success",
+            "message"=> "Field Updated",
+            "data" => Field::find($id)
+        ]);
     }
 
     /**

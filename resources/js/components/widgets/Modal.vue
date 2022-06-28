@@ -1,7 +1,9 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask" @click="close" v-show="show">
-            <div class="modal-container" @click.stop="close">
+        <div class="modal-mask" v-show="show">
+            <div class="modal-container">
+                <button @click="close" class="btn-primary align-self-end"> Go Back </button>
+
                 <slot></slot>
             </div>
         </div>
@@ -13,7 +15,7 @@ export default {
     props: ['show'],
 
     mounted: function () {
-        document.addEventListener("keydown", (e) => {
+        document.addEventListener('keydown', (e) => {
             if (this.show && e.keyCode == 27) {
                 this.close()
             }
