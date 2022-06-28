@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import Modal from "./widgets/Modal";
+    import Modal from "../widgets/Modal";
     import ShowSubscriber from "./ShowSubscriber";
 
     export default {

@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Fields from "./components/Fields";
-import AddField from "./components/AddField";
-import Subscribers from "./components/Subscribers";
+import Fields from "./components/fields/Fields";
+import AddField from "./components/fields/AddField";
+import Subscribers from "./components/subscribers/Subscribers";
 
 export const routes = [
     {

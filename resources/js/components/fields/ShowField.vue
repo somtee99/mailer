@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Modal from "./widgets/Modal";
+import Modal from "../widgets/Modal";
 import EditField from "./EditField";
 
 export default {
